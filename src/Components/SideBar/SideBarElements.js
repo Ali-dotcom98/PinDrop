@@ -16,9 +16,9 @@ const sidebarItems = [
         route: "/add-trip",
     },
     {
-        label: "My Notes",
+        label: "Suggestion",
         icon: Notebook,
-        route: "/notes",
+        route: "/Suggestion",
     },
     {
         label: "Settings",

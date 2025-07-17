@@ -4,7 +4,7 @@ import SideBar from '../../Components/SideBar/SideBar'
 
 const Default = () => {
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen bg-[#FAFAFA] ">
       <SideBar />
       <div className="flex-1 bg-dark-bg p-6  overflow-auto">
         <Outlet />

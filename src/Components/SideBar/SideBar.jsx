@@ -4,36 +4,36 @@ import { NavLink } from "react-router-dom"
 import {MapPinned} from "lucide-react"
 const SideBar = () => {
   return (
-    <div className='w-[15rem] h-screen bg-gradient-to-r from-cyan-800 to-teal-600 text-white p-4'>
-      <div className=' mb-6 space-y-2 py-2'>
-        <div className='flex gap-2 items-center'>
-          <span><MapPinned className='size-12' /></span>
-          <h1 className='font-poppins text-2xl'>PinDrop</h1>
-        </div>
-        <p>Your Virtual Travel Wishlist</p>
-      </div>
-      {sidebarItems.map((item, index) => {
+    <div className='w-20 h-screen bg-violet-600 text-white p-4'>
+     
+     <div className=' space-y-6'>
+       {sidebarItems.map((item, index) => {
         return (
-          <NavLink 
-            to={item.route} 
-            key={index}
-            className={({ isActive }) =>
-              `flex font-poppins tracking-wider font-semibold text-sm items-center  px-4 py-2 mb-3  gap-3 rounded hover:bg-slate-50/10 transition ${
-                isActive ? 'bg-slate-50/10 ' : ''
-              }`
-            }
-          >
+         <NavLink 
+          to={item.route} 
+          key={index}
+          className={({ isActive }) =>
+            `relative group flex font-poppins tracking-wider font-semibold text-sm items-center justify-center py-2 hover:bg-slate-50/10 rounded-2xl transition ${
+              isActive ? 'bg-slate-50/10 border border-b-4 rounded-2xl shadow-sm shadow-white' : ''
+            }`
+          }
+        >
+          <div>
+            <item.icon className='size-6' />
+          </div>
 
-            <div className='flex gap-4 items-center'>
-              <div><item.icon className='w-5 h-5'/></div>
-              <div className='text-[#F5F5F5]'>{item.label}</div>
-            </div>
-          </NavLink>
+          {/* Tooltip Label */}
+          <span className="absolute left-full  ml-3 whitespace-nowrap bg-black text-white px-2 py-1 text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-50">
+            {item.label}
+          </span>
+        </NavLink>
+
         );
       })}
-      <div className='absolute bottom-10'>
+     </div>
+      {/* <div className='absolute bottom-10'>
         Muhammad Ali
-      </div>
+      </div> */}
     </div>
   )
 }

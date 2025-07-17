@@ -7,6 +7,7 @@ import Default from './Utility/Layouts/Default'
 import NotFound from './Utility/NotFound'
 import AddTrip from './Pages/Form/AddTrip'
 import ListDisplay from './Pages/WishList/ListDisplay'
+import Country from './Pages/Suggestion/Country'
 
 const Routes = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const Routes = createBrowserRouter([
       {
         path: '/wishlist',
         element: <ListDisplay/>
+      },
+      {
+        path: '/Suggestion',
+        element: <Country/>
       },
       {path:"/add-trip", element:<AddTrip/>},
       { path: "*", element: <NotFound/> },

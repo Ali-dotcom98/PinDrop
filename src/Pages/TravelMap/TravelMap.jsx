@@ -1,77 +1,57 @@
-import React from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import { Filter, Map as MapIcon, MoveRight, Plus } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import {
+  MapContainer,
+  TileLayer,
+  GeoJSON,
+  Popup
+} from 'react-leaflet';
+import { Filter, Map as MapIcon } from 'lucide-react';
 import 'leaflet/dist/leaflet.css';
-import L from 'leaflet';
-
 
 const priorityColors = {
-  high: 'red',
-  medium: 'yellow',
-  low: 'green',
-  default: 'blue'
+  high: '#ef4444',   // red-500
+  medium: '#facc15', // yellow-400
+  low: '#4ade80',    // green-400
+  default: '#93c5fd' // blue-300
 };
 
-
-const createPriorityIcon = (priority = 'default') => {
-  const color = priorityColors[priority] || priorityColors.default;
-  
-
-  const availableColors = ['red', 'yellow', 'green'];
-  const useLocal = availableColors.includes(color);
-  
-  return new L.Icon({
-    iconUrl: useLocal 
-      ? `/map-markers/marker-icon-2x-${color}.png`
-      : ``,
-    shadowUrl: '/map-markers/marker-shadow.png',
-    iconSize: [25, 41],
-    iconAnchor: [12, 41],
-    popupAnchor: [1, -34],
-    shadowSize: [41, 41],
-    className: `priority-marker priority-${priority}`
-  });
-};
-
-
-const TravelMap = ({ destinations ,HandleFilter }) => {
+const TravelMap = ({ destinations, HandleFilter }) => {
   const center = [45, 20];
   const zoomLevel = 3;
 
-  const handlePriortity = (priority) => {
-    
-    HandleFilter(priority);
+  const [geoData, setGeoData] = useState(null);
+
+  useEffect(() => {
+    fetch('https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json')
+      .then(res => res.json())
+      .then(data => setGeoData(data));
+  }, []);
+
+  const getFillColor = (countryName) => {
+    const match = destinations.find(dest => dest.country.toLowerCase() === countryName.toLowerCase());
+    if (!match) return '#e5e7eb'; // neutral gray-200 if not found
+    return priorityColors[match.priority] || priorityColors.default;
   };
 
+  
+
   return (
-    <div className="mb-8">
-      <h2 className="text-xl font-semibold mb-4 text-gray-800 flex items-center justify-between ">
-        <div className='flex items-center gap-2'>
-          <MapIcon className="text-cyan-600" size={20} />
-          Travel Map
-        </div>
-      
-        <div className='flex  items-center'> 
-          <div className='w-fit'><Filter className='h-4 w-4'/></div>
-        <select name="" id=""  className='w-fit text-sm focus:outline-none focus:ring-cyan-500 focus:border-transparent transition ' onChange={(e) => handlePriortity(e.target.value)}>
-          <option value="" className='text-sm' disabled selected>
-          Select Priority
-          </option>
-          {["high", "medium", "low" ,"Default"].map((item) => (
-            <option className='capitalize px-10' key={item} value={item}>
-              {item}
-            </option>
-          ))}
-        </select>
+    <div className="mb-8 space-y-3 p-1 ">
+      <h2 className="text-xl font-semibold text-gray-800 flex items-center justify-between">
+        <div className="flex flex-col items-start gap-1">
+          <div className="flex items-center gap-2">
+            <MapIcon className="text-cyan-600" size={20} />
+            <span className="font-medium text-base text-[20px]">Travel Map</span>
+          </div>
+          
         </div>
 
         
-   
       </h2>
-      
-      <div className="bg-white rounded-lg shadow-md p-1 h-[400px]">
+
+      <div className="bg-white rounded-lg shadow-md h-[400px] space-y-4">
         <MapContainer
-          center={center}
+          center={[20, 100]}
           zoom={zoomLevel}
           className="h-full w-full rounded-none"
           scrollWheelZoom={true}
@@ -80,26 +60,40 @@ const TravelMap = ({ destinations ,HandleFilter }) => {
           worldCopyJump={true}
         >
           <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            attribution='&copy; OpenStreetMap contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             noWrap={true}
           />
-          {destinations.map((destination) => (
-            <Marker
-              key={destination.id}
-              position={destination.coordinates}
-              icon={createPriorityIcon(destination.priority)}
-            >
-              <Popup>
-                <div className="min-w-[200px]">
-                  <h3 className="font-semibold text-gray-800">{destination.placeName}</h3>
-                  <p className={`text-sm ${destination.priority==="high"?"text-red-500":destination.priority==="medium"?"text-yellow-500":"text-green-500"}`}>{destination.country}</p>
-                  <p className="text-sm text-gray-700 mt-2">{destination.reason}</p>
-                </div>
-              </Popup>
-            </Marker>
-          ))}
+
+          {geoData && (
+            <GeoJSON
+              data={geoData}
+              style={feature => ({
+                fillColor: getFillColor(feature.properties.name),
+                weight: 1,
+                color: "#ccc",
+                fillOpacity: 0.7,
+              })}
+              onEachFeature={(feature, layer) => {
+                const countryName = feature.properties.name;
+                const match = destinations.find(dest => dest.country.toLowerCase() === countryName.toLowerCase());
+
+                if (match) {
+                  layer.bindPopup(`
+                    <div style="min-width: 200px">
+                      <strong>${match.placeName}</strong><br/>
+                      <span style="color: ${getFillColor(countryName)};">${match.country}</span><br/>
+                      <em>${match.reason}</em>
+                    </div>
+                  `);
+                }
+              }}
+            />
+          )}
         </MapContainer>
+        <p className="text-sm text-gray-500 text-center italic font-medium">
+            View and manage all your favorite destinations on the map.
+          </p>
       </div>
     </div>
   );
