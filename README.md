@@ -1,6 +1,6 @@
 ## 📌 PinDrop
 
-**PinDrop** is a visually rich, interactive mapping platform that lets users explore, favorite, and manage countries. Built with **React**, **Leaflet**, and **Tailwind CSS**, it provides a seamless experience and beautifully styled UI components.
+**PinDrop**  is an interactive travel wish-list platform that allows users to create and prioritize dream destinations—both global and local—while exploring them on an interactive map with real-time images fetched via the Unsplash API.
 
 ---
 
