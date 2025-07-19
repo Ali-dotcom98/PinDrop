@@ -1,4 +1,4 @@
-**# 📌 PinDrop
+## 📌 PinDrop
 
 **PinDrop** is a visually rich, interactive mapping platform that lets users explore, favorite, and manage countries. Built with **React**, **Leaflet**, and **Tailwind CSS**, it provides a seamless experience and beautifully styled UI components.
 
