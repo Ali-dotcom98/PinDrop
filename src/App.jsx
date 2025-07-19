@@ -8,6 +8,9 @@ import NotFound from './Utility/NotFound'
 import AddTrip from './Pages/Form/AddTrip'
 import ListDisplay from './Pages/WishList/ListDisplay'
 import Country from './Pages/Suggestion/Country'
+import LocalWish from './Pages/LocalWish/LocalWish'
+import AddTripPage from './Pages/Form/AddTripPage'
+import DisplayList from './Pages/WishList/DisplayList'
 
 const Routes = createBrowserRouter([
   {
@@ -24,13 +27,18 @@ const Routes = createBrowserRouter([
       },
       {
         path: '/wishlist',
-        element: <ListDisplay/>
+        element: <DisplayList/>
       },
       {
         path: '/Suggestion',
         element: <Country/>
       },
-      {path:"/add-trip", element:<AddTrip/>},
+      
+      {
+        path: '/LocalWish',
+        element: <LocalWish/>
+      },
+      {path:"/add-trip", element:<AddTripPage/>},
       { path: "*", element: <NotFound/> },
     ]
   }

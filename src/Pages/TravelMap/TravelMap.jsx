@@ -56,7 +56,7 @@ const TravelMap = ({ destinations, HandleFilter }) => {
           className="h-full w-full rounded-none"
           scrollWheelZoom={true}
           style={{ height: '100%' }}
-          minZoom={3}
+          minZoom={2}
           worldCopyJump={true}
         >
           <TileLayer

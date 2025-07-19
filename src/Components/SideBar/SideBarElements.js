@@ -16,19 +16,19 @@ const sidebarItems = [
         route: "/add-trip",
     },
     {
-        label: "Suggestion",
+        label: "Local Wish",
         icon: Notebook,
-        route: "/Suggestion",
+        route: "/LocalWish",
+    },
+    {
+        label: "Support",
+        icon: HeartPlus,
+        route: "/support",
     },
     {
         label: "Settings",
         icon: Settings,
         route: "/settings",
     },
-    {
-        label: "Support",
-        icon: HeartPlus,
-        route: "/support",
-    }
 ];
 export default sidebarItems;

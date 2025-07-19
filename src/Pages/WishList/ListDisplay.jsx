@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {MapPin , Clock, Delete, Trash} from "lucide-react"
 import { data } from 'react-router-dom';
+import Card from './Card';
 const ListDisplay = () => {
   const [WishesList, setWishesList] = useState([]);
 
@@ -22,7 +23,7 @@ const ListDisplay = () => {
     
     const UpdateList = WishesList.filter((_,index)=>index!=indexA);
     setWishesList(UpdateList)
-    localStorage.setItem("Wishes", JSON.stringify(WishesList))
+    localStorage.setItem("Wishes", JSON.stringify(UpdateList))
     
   }
 
@@ -30,7 +31,7 @@ const ListDisplay = () => {
 
   return (
    <>
-      <div className='bg-zinc-50/10 h-screen font-poppins space-y-5 '>
+      {/* <div className='bg-zinc-50/10 h-screen font-poppins space-y-5 '>
         <h1 className='text-2xl font-medium pt-2'>My Travel Wishlist</h1>
         <div className='flex items-center justify-between '>
           <div className='flex gap-2 items-center'>
@@ -54,6 +55,8 @@ const ListDisplay = () => {
                   <div className={`text-sm capitalize  font-sans px-5 rounded-xl  ${item.priority==="high" ?" bg-red-100 text-red-600  "  : item.priority ==="medium" ? "bg-yellow-100 text-yellow-600" :"bg-green-100 text-green-600 "}`}>
                       {item.priority}
                   </div>
+                  <h1 className='uppercase  size-10 flex items-center justify-center '><span><img src={item.flag} alt="" /></span></h1>
+
                 </div>
                 <div className='line-clamp-2 min-h-[3rem] pt-3'>
                   {item.reason}
@@ -76,7 +79,9 @@ const ListDisplay = () => {
           }
         </div>
 
-      </div>
+      </div> */}
+
+      <Card/>
    
    </>
   );

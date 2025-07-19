@@ -63,11 +63,7 @@ const Dashboard = () => {
     <>
       <div className='relative space-y-5'>
            <div className=''>
-              <div className='flex  justify-between '>
-                <Header/>
-                <Toggle/>
               
-              </div>
               <div>
                   <div className=' items-center justify-between flex bg-violet-600 border border-violet-600 rounded-2xl'>
                   
