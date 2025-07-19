@@ -44,5 +44,5 @@ npm install
 # Start the development server
 npm run dev
 ```
-![image alt](https://github.com/Ali-dotcom98/ClaritySEO/blob/main/screencapture-localhost-5173-2025-07-16-12_11_07.png?raw=true)
+![image alt](https://github.com/Ali-dotcom98/PinDrop/blob/main/Desktop%20-%201.png?raw=true)
 
