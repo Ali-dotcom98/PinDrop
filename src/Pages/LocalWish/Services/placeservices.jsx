@@ -1,6 +1,8 @@
 const OVERPASS_URL = 'https://overpass-api.de/api/interpreter';
 
 export const fetchNearbyPlaces = async (lat, lon, radius = 4000) => {
+  console.log("Lat:", lat, "Lon:", lon);
+
   const query = `
     [out:json][timeout:25];
     (

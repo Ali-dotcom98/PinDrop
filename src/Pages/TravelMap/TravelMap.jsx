@@ -40,7 +40,7 @@ const TravelMap = ({ destinations, HandleFilter }) => {
       <h2 className="text-xl font-semibold text-gray-800 flex items-center justify-between">
         <div className="flex flex-col items-start gap-1">
           <div className="flex items-center gap-2">
-            <MapIcon className="text-cyan-600" size={20} />
+            <MapIcon className="text-emerald-300" size={20} />
             <span className="font-medium text-base text-[20px]">Travel Map</span>
           </div>
           

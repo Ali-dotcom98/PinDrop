@@ -6,6 +6,7 @@ import MapView from './MapView';
 import PlaceCard from './PlaceCard';
 import Wishlist from './Wishlist';
 import LoadingSpinner from './LoadingSpinner';
+import Pic1 from "./Assests/NoFound.svg"
 
 function LocalWish() {
   
@@ -40,9 +41,7 @@ console.log("selectedPlace",selectedPlace);
   }, [wishlist]);
 
   useEffect(() => {
-    if (location) {
-      fetchPlaces();
-    }
+    fetchPlaces();
   }, []);
 
   const fetchPlaces = async () => {
@@ -53,6 +52,8 @@ console.log("selectedPlace",selectedPlace);
 
     try {
       const nearbyPlaces = await fetchNearbyPlaces(location.lat, location.lon, 4000);
+      console.log("nearbyPlaces", nearbyPlaces);
+      
       setPlaces(nearbyPlaces);
     } catch (error) {
       setPlacesError(error.message || 'Failed to fetch places');
@@ -116,20 +117,20 @@ console.log("selectedPlace",selectedPlace);
   }
 
   return (
-    <div className="h-screen bg-gray-50 flex flex-col">
+    <div className="h-screen bg-gray-50  flex flex-col">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b border-gray-200 px-4 py-3">
+      <header className="bg-white shadow-sm border rounded-lg rounded-bl-none border-violet-600 px-4 py-3">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-3">
-            <MapPin className="text-blue-600" size={24} />
-            <h1 className="text-xl font-bold text-gray-900">Local Explorer</h1>
+          <div className='flex gap-2 items-center'>
+              <h1 className='text-emerald-300'><MapPin /></h1>
+              <p className='font-medium tracking-wider'>Local Wish</p>
           </div>
 
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-2 ">
             <button
               onClick={fetchPlaces}
               disabled={placesLoading}
-              className="flex items-center space-x-2 bg-blue-500 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-600 transition-colors disabled:opacity-50"
+              className="flex items-center space-x-2 border border-b-4 border-violet-600   px-2 rounded-2xl  text-sm bg-white py-2  font-medium hover:bg-violet-100 transition-colors disabled:opacity-50"
             >
               <RefreshCw size={16} className={placesLoading ? 'animate-spin' : ''} />
               <span>Refresh</span>
@@ -143,10 +144,10 @@ console.log("selectedPlace",selectedPlace);
       {/* Main Content */}
       <div className="flex-1 flex overflow-hidden">
         {/* Sidebar */}
-        <div className="w-80 bg-white shadow-lg border-r border-gray-200 flex flex-col">
+        <div className="w-80 bg-white shadow-lg border-t-0 border border-violet-600 flex flex-col">
           <div className="p-4 border-b border-gray-200">
             <h2 className="text-lg font-semibold text-gray-900">Nearby Places</h2>
-            <p className="text-sm text-gray-600">Within 4km of your location</p>
+            <p className="text-sm text-gray-600 font-medium">Within 4km of your location</p>
           </div>
 
           <div className="flex-1 overflow-y-auto p-4">
@@ -170,7 +171,8 @@ console.log("selectedPlace",selectedPlace);
               </div>
             ) : places.length === 0 ? (
               <div className="text-center py-12">
-                <MapPin className="mx-auto text-gray-300 mb-4" size={32} />
+                {/* <MapPin className="mx-auto text-gray-300 mb-4" size={32} /> */}
+                <div className=' flex items-center justify-center py-2'><img src={Pic1} className='size-32' alt="" /></div>
                 <p className="text-gray-600">No places found nearby</p>
                 <p className="text-gray-400 text-sm mt-1">Try refreshing or moving to a different location</p>
               </div>
