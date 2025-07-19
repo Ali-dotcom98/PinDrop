@@ -6,16 +6,16 @@
 
 ## 🚀 Features
 
-- ✅ **Interactive Map Explorer** – Explore countries interactively on the world map  
-- 📍 **Add to Wishlist** – Save your favorite places for quick access  
-- 💬 **Country Reviews** – View reviews and feedback for various countries  
-- 📊 **Visual Analytics** – See color-coded map data based on preferences  
-- 🎨 **Dark/Light Theme Toggle** – Smooth visual transitions  
-- 🗺️ **Country Details Panel** – View flags, currency, population, and more  
-- 🔎 **Search Functionality** – Quickly find any country by name  
-- 🧭 **Sidebar Navigation** – Easy-to-use sidebar with icons  
-- 🔄 **Auto Sync Wishlist** – Data persists using localStorage  
-- 📱 **Fully Responsive Design** – Works great on all screen sizes  
+### 🌍 Global Wish List
+- ✨ Users can **add countries or cities** they wish to visit.
+- 🎯 Each wish can be assigned a **priority level**.
+- 🗺️ Visually display wishes with **interactive map integration** and **real-time images** from Unsplash.
+- 🏁 Easily **add new places** using a simple form with **country flag detection**.
+
+### 📌 Local Wish List
+- 📍 Automatically detect the user's **current location**.
+- 🧭 Suggest interesting nearby places to visit (e.g., parks, museums, attractions).
+- 🗺️ Show location and suggestions directly on the map with clean UI.
 
 ---
 
