@@ -33,7 +33,7 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/PinDrop.git
+git clone https://github.com/Ali-dotcom98/PinDrop.git
 
 # Navigate into the project folder
 cd pindrop
