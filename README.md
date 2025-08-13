@@ -36,7 +36,7 @@
 git clone https://github.com/Ali-dotcom98/PinDrop.git
 
 # Navigate into the project folder
-cd pindrop
+cd PinDrop
 
 # Install dependencies
 npm install
