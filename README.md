@@ -1,4 +1,4 @@
-## 📌 PinDrop
+## 📌 PinDrop 
 
 **PinDrop**  is an interactive travel wish-list platform that allows users to create and prioritize dream destinations—both global and local—while exploring them on an interactive map with real-time images fetched via the Unsplash API.
 
