@@ -44,5 +44,5 @@ npm install
 # Start the development server
 npm run dev
 ```
-![image alt](https://github.com/Ali-dotcom98/PinDrop/blob/main/PINDROP_Mockup.png?raw=true)
+![image alt](https://github.com/Ali-dotcom98/PinDrop/blob/main/PinDrop1.png?raw=true)
 
