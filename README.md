@@ -4,7 +4,7 @@
 
 ---
 
-## 🚀 Features
+## 🌟 Features
 
 ### 🌍 Global Wish List
 - Users can **add countries or cities** they wish to visit.
