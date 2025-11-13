@@ -6,13 +6,13 @@
 
 ## 🌟 Features
 
-### 🌍 Global Wish List
+### Global Wish List
 - Users can **add countries or cities** they wish to visit.
 - Each wish can be assigned a **priority level**.
 - Visually display wishes with **interactive map integration** and **real-time images** from Unsplash.
 - Easily **add new places** using a simple form with **country flag detection**.
 
-### 📌 Local Wish List
+### Local Wish List
 - Automatically detect the user's **current location**.
 - Suggest interesting nearby places to visit (e.g., parks, museums, attractions).
 - Show location and suggestions directly on the map with clean UI.
